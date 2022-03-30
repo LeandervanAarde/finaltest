@@ -19,6 +19,7 @@ const ChartOne = () => {
     const[infoData, setInfoData] = useState([]);
     const[thrustVac, setThrustVac] = useState([]);
     const[lineData, setLineData] = useState([]);
+    const[missionInfo, setMissionInfo] = useState([]);
     
 
     useEffect(()=>{
@@ -111,6 +112,28 @@ const ChartOne = () => {
     },[])
     console.log(lineData);
 
+    useEffect(()=>{
+        axios.get('https://api.spacexdata.com/v3/missions')
+        .then((result)=>{
+            let data = result.data;
+      
+            const infoArray = [];
+
+            for (let i = 0; i < data.length; i++) {
+               infoArray.push({
+                    id: data[i].imission_id,
+                    Name: data[i].mission_name,
+                   descritption: data[i].description,
+                    Manu: data[i].manufacturers,
+                    web: data[i].website,
+                });
+                setMissionInfo(infoArray);
+            }
+  
+    })
+    console.log(missionInfo);
+},[])
+
 
 
     const chartStats= {
@@ -166,7 +189,7 @@ const ChartOne = () => {
         <Line data = {lineChart}/>
         </div >
         <div className='container'>
-        
+
         </div>
         </>
     );
