@@ -56,7 +56,7 @@ const ChartOne = () => {
         })
         
 
-        console.log(succData);
+      
     },[]);
    
 
@@ -84,7 +84,6 @@ const ChartOne = () => {
         .then((launches)=>{
             let data = launches.data;
  
-            // console.log(data);
             const yearArray = [];
             for(let i= 0; i<data.length; i++){
                 const year = data[i].date_local;
@@ -110,7 +109,7 @@ const ChartOne = () => {
         })
 
     },[])
-    console.log(lineData);
+
 
     useEffect(()=>{
         axios.get('https://api.spacexdata.com/v3/missions')
@@ -127,12 +126,15 @@ const ChartOne = () => {
                     Manu: data[i].manufacturers,
                     web: data[i].website,
                 });
-                setMissionInfo(infoArray);
+            
             }
-  
+            setMissionInfo(infoArray);
+           
     })
-    console.log(missionInfo);
+
+  
 },[])
+  console.log(missionInfo);
 
 
 
