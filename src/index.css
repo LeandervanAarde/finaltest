@@ -1,0 +1,13 @@
+.PanelOne{
+  height: 70vh;
+  width: 25%;
+  float: left;
+  margin-left: 20px
+}
+.PanelThree{
+  height: 70vh;
+  width: 37.5%;
+  float: left;
+  margin-left: 20px
+}
+
